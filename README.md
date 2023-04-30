@@ -1,8 +1,8 @@
-# redux-websocket [![codecov](https://codecov.io/gh/giantmachines/redux-websocket/branch/master/graph/badge.svg)](https://codecov.io/gh/giantmachines/redux-websocket) [![npm version](https://badge.fury.io/js/%40giantmachines%2Fredux-websocket.svg)](https://badge.fury.io/js/%40giantmachines%2Fredux-websocket) ![npm](https://img.shields.io/npm/dm/@giantmachines/redux-websocket)
+# just-redux-websocket [![codecov](https://codecov.io/gh/konclave/just-redux-websocket/branch/master/graph/badge.svg)](https://codecov.io/gh/konclave/just-redux-websocket) [![npm version](https://badge.fury.io/js/just-redux-websocket.svg)](https://badge.fury.io/js/just-redux-websocket)
 
-> ⚠️⚠️⚠️ **NOTE: This project will be entering maintenance mode for the forseeable future so that we can focus on other internal initiatives. We thank you for using our library and hope that it has been useful to you! Please feel free to fork a version of `@giantmachines/redux-websocket` if you would like to expand on it or run into any significant issues or bugs that require a major change. The last stable version will be `v1.5.1`**.
+That is the fork of [redux-websocket](https://github.com/giantmachines/redux-websocket) that is not maintained anymore.
 
-`redux-websocket` is a Redux middleware for managing data over a WebSocket connection.
+`just-redux-websocket` is a Redux middleware for managing data over a WebSocket connection.
 
 This middleware uses actions to interact with a WebSocket connection including connecting, disconnecting, sending messages, and receiving messages. All actions follow the [Flux Standard Action](https://github.com/acdlite/flux-standard-action) model.
 
@@ -17,7 +17,7 @@ This middleware uses actions to interact with a WebSocket connection including c
 ## Installation
 
 ```sh
-$ npm i @giantmachines/redux-websocket
+$ npm i just-redux-websocket
 ```
 
 ## Configuration
@@ -26,7 +26,7 @@ Configure your Redux store to use the middleware with `applyMiddleware`. This pa
 
 ```js
 import { applyMiddleware, compose, createStore } from 'redux';
-import reduxWebsocket from '@giantmachines/redux-websocket';
+import reduxWebsocket from 'just-redux-websocket';
 
 import reducer from './store/reducer';
 
@@ -71,9 +71,9 @@ interface Options {
 
 ## Usage
 
-`redux-websocket` will dispatch some actions automatically, based on what the internal WebSocket connection. Some actions will need to be dispatched by you.
+`just-redux-websocket` will dispatch some actions automatically, based on what the internal WebSocket connection. Some actions will need to be dispatched by you.
 
-By default `redux-websocket` actions get dispatched with a timestamp as a `Date` object. This has caused some users to experience non serializable action warnings when using redux toolkit. If you encounter this problem you can either add a `dateSerializer` function to `redux-websocket` options or [setup redux toolkit](https://redux-toolkit.js.org/usage/usage-guide#working-with-non-serializable-data) to ignore the actions.
+By default `just-redux-websocket` actions get dispatched with a timestamp as a `Date` object. This has caused some users to experience non serializable action warnings when using redux toolkit. If you encounter this problem you can either add a `dateSerializer` function to `just-redux-websocket` options or [setup redux toolkit](https://redux-toolkit.js.org/usage/usage-guide#working-with-non-serializable-data) to ignore the actions.
 
 ### User dispatched actions
 
@@ -88,7 +88,7 @@ These actions must be dispatched by you, however we do export action creator fun
 ###### Example:
 
 ```js
-import { connect } from '@giantmachines/redux-websocket';
+import { connect } from 'just-redux-websocket';
 
 store.dispatch(connect('wss://my-server.com'));
 
@@ -120,7 +120,7 @@ store.dispatch(connect('wss://my-server.com', 'MY_PREFIX'));
 ###### Example:
 
 ```js
-import { disconnect } from '@giantmachines/redux-websocket';
+import { disconnect } from 'just-redux-websocket';
 
 store.dispatch(disconnect());
 ```
@@ -136,7 +136,7 @@ store.dispatch(disconnect());
 ###### Example:
 
 ```js
-import { send } from '@giantmachines/redux-websocket';
+import { send } from 'just-redux-websocket';
 
 store.dispatch(send({ my: 'message' }));
 ```
