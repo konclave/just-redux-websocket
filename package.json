@@ -1,6 +1,6 @@
 {
   "name": "just-redux-websocket",
-  "version": "1.5.2",
+  "version": "1.6.0",
   "description": "A redux middleware to handle websocket connections",
   "main": "dist",
   "files": [
