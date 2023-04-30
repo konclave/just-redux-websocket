@@ -6,9 +6,12 @@ module.exports = {
   mode: env,
   entry: './src/index',
   output: {
+    library: {
+      type: 'umd',
+      name: 'JustReduxWebsocket'
+    },
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
-    libraryTarget: 'umd',
     globalObject: 'this',
   },
   resolve: {
