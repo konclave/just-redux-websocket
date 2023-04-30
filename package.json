@@ -39,7 +39,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "redux": "~4"
+    "redux": "~4",
+    "serialize-error": "^11.0.0"
   },
   "devDependencies": {
     "@babel/cli": "7.21.5",

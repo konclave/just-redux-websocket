@@ -13,6 +13,7 @@ import {
   WEBSOCKET_SEND,
 } from './actionTypes';
 import { Action, Deserializer } from './types';
+import {serializeError} from "serialize-error";
 
 type WithProtocols = [string[]] | [string[], string];
 type WithPrefix = [string];
@@ -115,7 +116,7 @@ export const error = (
   err: Error,
   prefix: string
 ) =>
-  buildAction(`${prefix}::${WEBSOCKET_ERROR}`, err, {
+  buildAction(`${prefix}::${WEBSOCKET_ERROR}`, serializeError(err), {
     message: err.message,
     name: err.name,
     originalAction,
