@@ -12,7 +12,7 @@ import {
 } from './actions';
 import { Action, Serializer, Deserializer } from './types';
 
-interface ReduxWebSocketOptions {
+export interface ReduxWebSocketOptions {
   prefix: string;
   reconnectInterval: number;
   reconnectOnClose: boolean;

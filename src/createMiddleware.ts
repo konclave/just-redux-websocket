@@ -59,7 +59,7 @@ export default (rawOptions?: Options): Middleware => {
         try {
           handler(store, action);
         } catch (err) {
-          dispatch(error(action, err, prefix));
+          dispatch(error(action, err as Error, prefix));
         }
       }
     }

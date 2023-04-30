@@ -1,4 +1,4 @@
-import ReduxWebSocket from '../ReduxWebSocket';
+import ReduxWebSocket, {ReduxWebSocketOptions} from '../ReduxWebSocket';
 
 declare global {
   namespace NodeJS {
@@ -20,7 +20,7 @@ describe('ReduxWebSocket', () => {
     reconnectOnClose: false,
     reconnectOnError: true,
     serializer: JSON.stringify,
-  };
+  } as ReduxWebSocketOptions;
   const closeMock = jest.fn();
   const sendMock = jest.fn();
   const addEventListenerMock = jest.fn();
@@ -39,7 +39,7 @@ describe('ReduxWebSocket', () => {
       addEventListener: addEventListenerMock,
       close: closeMock,
       send: sendMock,
-    }));
+    })) as any;
   });
 
   describe('connect', () => {
