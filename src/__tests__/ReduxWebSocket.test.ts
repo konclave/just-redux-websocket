@@ -107,7 +107,7 @@ describe('ReduxWebSocket', () => {
         ...options,
         reconnectOnClose: true,
       });
-      const event = new Event('');
+      const event = new CloseEvent('');
 
       /* eslint-disable dot-notation */
       rws['handleBrokenConnection'] = jest.fn();
