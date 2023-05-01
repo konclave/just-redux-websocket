@@ -1,4 +1,4 @@
-import {
+import type {
   WEBSOCKET_CLOSED,
   WEBSOCKET_CONNECT,
   WEBSOCKET_DISCONNECT,

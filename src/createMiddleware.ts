@@ -1,6 +1,6 @@
-import { Middleware, MiddlewareAPI } from 'redux';
+import type { Middleware, MiddlewareAPI } from 'redux';
 
-import { Action, Options } from './types';
+import type { Action, Options } from './types';
 import { error } from './actions';
 import * as actionTypes from './actionTypes';
 import ReduxWebSocket from './ReduxWebSocket';

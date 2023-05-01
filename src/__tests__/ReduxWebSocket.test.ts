@@ -1,4 +1,5 @@
-import ReduxWebSocket, {ReduxWebSocketOptions} from '../ReduxWebSocket';
+import type { ReduxWebSocketOptions } from '../ReduxWebSocket';
+import ReduxWebSocket from '../ReduxWebSocket';
 
 declare global {
   namespace NodeJS {

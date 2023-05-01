@@ -8,7 +8,7 @@ module.exports = {
   output: {
     library: {
       type: 'umd',
-      name: 'JustReduxWebsocket'
+      name: 'JustReduxWebsocket',
     },
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',

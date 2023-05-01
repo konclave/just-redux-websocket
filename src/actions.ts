@@ -12,8 +12,8 @@ import {
   WEBSOCKET_OPEN,
   WEBSOCKET_SEND,
 } from './actionTypes';
-import { Action, Deserializer } from './types';
-import {serializeError} from "serialize-error";
+import type { Action, Deserializer } from './types';
+import { serializeError } from 'serialize-error';
 
 type WithProtocols = [string[]] | [string[], string];
 type WithPrefix = [string];

@@ -1,4 +1,4 @@
-import { Dispatch, MiddlewareAPI } from 'redux';
+import type { Dispatch, MiddlewareAPI } from 'redux';
 
 import {
   beginReconnect,
@@ -10,7 +10,7 @@ import {
   reconnectAttempt,
   reconnected,
 } from './actions';
-import { Action, Serializer, Deserializer } from './types';
+import type { Action, Serializer, Deserializer } from './types';
 
 export interface ReduxWebSocketOptions {
   prefix: string;
@@ -135,7 +135,11 @@ export default class ReduxWebSocket {
    * @param {string} prefix
    * @param {Event} event
    */
-  private handleClose = (dispatch: Dispatch, prefix: string, event: CloseEvent) => {
+  private handleClose = (
+    dispatch: Dispatch,
+    prefix: string,
+    event: CloseEvent
+  ) => {
     dispatch(closed(event, prefix));
 
     // Conditionally attempt reconnection if enabled and applicable

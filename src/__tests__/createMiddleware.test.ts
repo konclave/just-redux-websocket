@@ -1,7 +1,7 @@
 import * as actions from '../actions';
 import middleware from '../createMiddleware';
 import ReduxWebSocket from '../ReduxWebSocket';
-import { Options } from '../types';
+import type { Options } from '../types';
 
 jest.mock('../ReduxWebSocket');
 
@@ -24,20 +24,35 @@ ReduxWebSocketMock.mockImplementation((options) => {
   /* eslint-disable lines-between-class-members */
   class Fake {
     close = () => {};
+
     connect = connectMock;
+
     disconnect = disconnectMock;
+
     handleBrokenConnection = () => {};
+
     hasOpened = false;
+
     lastSocketUrl = '';
+
     private options = options;
+
     reconnectCount = 0;
+
     reconnectionInterval = null;
+
     reconnectOnClose = false;
+
     send = sendMock;
+
     websocket = null;
+
     handleClose = () => {};
+
     handleError = () => {};
+
     handleOpen = () => {};
+
     handleMessage = () => {};
   }
   /* eslint-enable lines-between-class-members */

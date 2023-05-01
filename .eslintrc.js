@@ -4,12 +4,17 @@ module.exports = {
   },
   plugins: ['eslint-comments', 'jest', 'promise', '@typescript-eslint'],
   parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: './tsconfig.json',
+  },
   extends: [
     'airbnb-typescript',
     'plugin:eslint-comments/recommended',
     'plugin:jest/recommended',
     'plugin:promise/recommended',
     'eslint-config-prettier',
+    'plugin:react/recommended',
+    'plugin:import/recommended',
   ],
   rules: {
     indent: [
@@ -42,5 +47,7 @@ module.exports = {
         ],
       },
     ],
+    '@typescript-eslint/consistent-type-imports': 'error',
+    '@typescript-eslint/dot-notation': 'off',
   },
 };
