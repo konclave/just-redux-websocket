@@ -41,7 +41,7 @@ You may also pass options to the `reduxWebsocket` function.
 
 #### Available options
 
-```js
+```typescript
 interface Options {
   // Defaults to 'REDUX_WEBSOCKET'. Use this option to set a custom action type
   // prefix. This is useful when you're creating multiple instances of the
