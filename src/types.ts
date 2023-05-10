@@ -42,5 +42,5 @@ type Options = {
 
 // Huh? https://github.com/babel/babel/issues/6065#issuecomment-453901877
 /* eslint-disable no-undef */
-export { Action, ActionType, Options, Serializer, Deserializer };
+export type { Action, ActionType, Options, Serializer, Deserializer };
 /* eslint-enable no-undef */
