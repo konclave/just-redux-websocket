@@ -13,39 +13,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18.x'
-          cache: 'npm'
-
       - name: Get npm cache directory
         id: npm-cache-dir
         shell: bash
         run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
 
-      - name: Restore cached dependencies
-        id: npm-cache
-        uses: actions/cache/restore@v3
-        with:
-          path: ${{ steps.npm-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-
       - name: Install dependencies
-        if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm ci
 
-      - name: Debug
-        run: |
-          echo "dir=${{ steps.npm-cache-dir.outputs.dir }}"
-          ls -la ${{ steps.npm-cache-dir.outputs.dir }}
-
       - name: Cache dependencies
-        if: steps.npm-cache.outputs.cache-hit != 'true'
         uses: actions/cache/save@v3
         with:
-          path: ${{ steps.npm-cache-dir.outputs.dir }}
-          key: ${{ steps.npm-cache.outputs.cache-primary-key }}
+          path: |
+            ${{ steps.npm-cache-dir.outputs.dir }}
+            node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
 
       - name: Lint code
         run: npm run lint
@@ -53,45 +35,47 @@ jobs:
       - name: Check types
         run: npm run check-types
 
-#  publish-app:
-#    name: Publish package to npm
-#    needs: build-app
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#      - name: Checkout repository
-#        uses: actions/checkout@v3
-#
-#      - name: Get npm cache directory
-#        id: npm-cache-dir
-#        shell: bash
-#        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
-#
-#      - name: Restore cached dependencies
-#        id: npm-cache
-#        uses: actions/cache/restore@v3
-#        with:
-#          path: ${{ steps.npm-cache-dir.outputs.dir }}
-#          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-#
-#      - name: Install dependencies
-#        if: steps.npm-cache.outputs.cache-hit != 'true'
-#        run: npm ci
-#
-#      - name: Build package
-#        run: npm run build
-#
-#      - name: Set up git user
-#        run: |
-#          git config --global user.email "vianomore@gmail.com"
-#          git config --global user.name "Ivan Vasilev"
-#
-#      - name: Publish release
-#        run: |
-#          npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
-#          npm run release-it
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  publish-app:
+    name: Publish package to npm
+    needs: build-app
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        shell: bash
+        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
+
+      - name: Restore npm dependencies
+        id: npm-deps
+        uses: actions/cache/restore@v3
+        with:
+          path: |
+            ${{ steps.npm-cache-dir.outputs.dir }}
+            node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
+        if: steps.npm-deps.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Build package
+        run: npm run build
+
+      - name: Set up git user
+        run: |
+          git config --global user.email "vianomore@gmail.com"
+          git config --global user.name "Ivan Vasilev"
+
+      - name: Publish release
+        run: |
+          npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
+          npm run release-it
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 #      - name: Run tests
 #        run: |
