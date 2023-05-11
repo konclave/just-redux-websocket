@@ -2,7 +2,7 @@
   "name": "just-redux-websocket",
   "version": "1.6.0",
   "description": "A redux middleware to handle websocket connections",
-  "main": "dist",
+  "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
     "dist/**/*"
@@ -17,7 +17,8 @@
     "check-format": "npm run prettier -- --list-different",
     "lint": "eslint --cache --ext .js,.jsx,.ts,.tsx --ignore-path=.gitignore ./src",
     "test": "jest --coverage",
-    "validate": "npm run check-format && npm run lint && npm run build"
+    "validate": "npm run check-format && npm run lint && npm run build",
+    "release-it": "release-it --ci"
   },
   "repository": {
     "type": "git",
