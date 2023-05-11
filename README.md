@@ -1,6 +1,8 @@
 # just-redux-websocket [![npm version](https://badge.fury.io/js/just-redux-websocket.svg)](https://badge.fury.io/js/just-redux-websocket) [![minified](https://badgen.net/bundlephobia/min/just-redux-websocket)](https://badgen.net/bundlephobia/min/just-redux-websocket)
 
-That is the fork of [redux-websocket](https://github.com/giantmachines/redux-websocket) that is not maintained anymore.
+That is the fork of [redux-websocket](https://github.com/giantmachines/redux-websocket) which is not maintained anymore.
+
+The changes that are added to the library are described in the [CHANGELOG](CHANGELOG.md)
 
 `just-redux-websocket` is a Redux middleware for managing data over a WebSocket connection.
 
