@@ -1,3 +1,16 @@
+
+
+## [2.0.0](https://github.com/konclave/just-redux-websocket/compare/v1.6.0...v2.0.0) (2023-05-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* now library exposes an es modules
+
+### Features
+
+* compile to es-modules ([7e4c007](https://github.com/konclave/just-redux-websocket/commit/7e4c007e2423153be4f88a39c278eb2b01862632))
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
