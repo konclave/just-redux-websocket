@@ -13,6 +13,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.x'
+          cache: 'npm'
+
       - name: Get npm cache directory
         id: npm-cache-dir
         shell: bash
@@ -33,7 +39,7 @@ jobs:
         run: |
           echo "dir=${{ steps.npm-cache-dir.outputs.dir }}"
           ls -la ${{ steps.npm-cache-dir.outputs.dir }}
-          
+
       - name: Cache dependencies
         if: steps.npm-cache.outputs.cache-hit != 'true'
         uses: actions/cache/save@v3
