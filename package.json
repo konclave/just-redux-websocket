@@ -8,7 +8,7 @@
     "dist/**/*"
   ],
   "scripts": {
-    "build": "npm run clean; tsc --project tsconfig.build.json",
+    "build": "npm run clean; tsc --project tsconfig.build.json && rimraf dist/types.js",
     "build:watch": "npm run clean; tsc --watch",
     "clean": "rimraf dist",
     "check-types": "tsc --noEmit",
