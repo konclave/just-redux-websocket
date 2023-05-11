@@ -1,4 +1,4 @@
-# just-redux-websocket [![codecov](https://codecov.io/gh/konclave/just-redux-websocket/branch/master/graph/badge.svg)](https://codecov.io/gh/konclave/just-redux-websocket) [![npm version](https://badge.fury.io/js/just-redux-websocket.svg)](https://badge.fury.io/js/just-redux-websocket)
+# just-redux-websocket [![npm version](https://badge.fury.io/js/just-redux-websocket.svg)](https://badge.fury.io/js/just-redux-websocket) [![minified](https://badgen.net/bundlephobia/min/just-redux-websocket)](https://badgen.net/bundlephobia/min/just-redux-websocket)
 
 That is the fork of [redux-websocket](https://github.com/giantmachines/redux-websocket) that is not maintained anymore.
 
